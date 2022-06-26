@@ -2,10 +2,8 @@
 <head>
     <title>Image Server - Example</title>
     <style>
-    img
-    {
-        border: 1px solid #CCCCCC;
-    }
+        body { background-color: #FFFFFF; }
+        img { border: 1px solid #CCCCCC; }
     </style>
 </head>
 <body>
