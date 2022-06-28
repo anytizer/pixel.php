@@ -17,3 +17,6 @@ Then, you will be able to use: `<img src="DOMAIN/?w=100&amp;h=100" />` for a 100
 
 **Question**: Can it support multiple hosting server?<br/>
 **Answer**: It currently supports apache via .htaccess. You can change it yourself, if you have a different hosting provider.
+
+**Question**: Can I define a color?<br/>
+**Answser**: I am also thinking to implement, if it helps.
