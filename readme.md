@@ -1,7 +1,7 @@
 # pixel.php
 
 Serves a blank image between 1x1 pixels to 1000x1000 pixels. The image is natively generated .png file.
-It is not stretched or shirnked. The content is, howerver, empty. No watermarks, no advertising.
+It is not stretched or shrinked. The content is, howerver, empty. No watermarks, no advertising.
 
 For example, [view how it appears](https://transparent-images.herokuapp.com/) - as deployed manually on Heroku.
 
