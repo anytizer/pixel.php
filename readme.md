@@ -2,6 +2,8 @@
 
 Serves a blank image between 1x1 pixels to 1000x1000 pixels.
 
+For example, [view how it appears](https://transparent-images.herokuapp.com/).
+
 ## FAQs
 
 **Question**: Can I use image borders?
