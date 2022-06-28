@@ -1,43 +1,93 @@
-<?php
-/**
- * Serve as image output
- */
-header("Content-Type: image/png");
-header('Content-disposition: inline; filename="image.png"');
+<html>
+<head>
+    <title>Placeholder Image Server - Example</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="w3.css">
+    <style>
+        body { background-color: #FFFFFF; }
+        img { border: 1px solid #AAAACC; }
+		input[type="text"] { width: 50px; }
+		h2 { color: purple; }
+		a { text-decoration: none; border-bottom: 1px solid #FFAA99; }
+    </style>
+</head>
+<body class="w3-white">
+	<div class="w3-container w3-blue">
+		<h1>Image Placeholder</h1>
+	</div>
+	<div class="w3-padding">
+		<p>Serves a blank image having size between 1x1 pixels and 1000x1000 pixels.</p>
+		<p>Hosted on <a href="https://heroku.com/">Heroku</a> &raquo; <a href="https://transparent-images.herokuapp.com/">Transparent Images</a></p>
+		<p>Source code on github: <a href="https://github.com/anytizer/pixel.php">@anytizer/pixel.php</a></p>
 
-/**
- * Do not serve too large image in order to save server resources.
- * Adjust new width and height in that case.
- *
- * Example of an image source:
- *   http://pixel.example.com/?w=200&h=100
- */
+		<h2>Examples</h2>
+		<p>
+			<img src="image/?w=40&amp;h=30" width="40" height="30" />
+			<img src="image/?w=400&amp;h=30" width="400" height="30" />
+		</p>
+		<p>
+			<img src="image/?w=130&amp;h=90" width="130" height="90" />
+			<img src="image/?w=310&amp;h=90" width="310" height="90" />
+		</p>
+		<p>
+			<img src="image/?w=80&amp;h=80" width="80" height="80" />
+			<img src="image/?w=80&amp;h=80" width="80" height="80" />
+			<img src="image/?w=80&amp;h=80" width="80" height="80" />
+			
+			<img src="image/?w=90&amp;h=80" width="90" height="80" />
+			
+			<img src="image/?w=20&amp;h=80" width="20" height="80" />
+			<img src="image/?w=20&amp;h=80" width="20" height="80" />
+			<img src="image/?w=20&amp;h=80" width="20" height="80" />
+			<img src="image/?w=20&amp;h=80" width="20" height="80" />
+		</p>
+		<p>
+			<img src="image/?w=40&amp;h=10" width="450" height="100" />
+		</p>
+		<p>
+			<img src="image/?w=10&amp;h=10" width="10" height="10" />
+			<img src="image/?w=20&amp;h=20" width="20" height="10" />
+			<img src="image/?w=10&amp;h=10" width="10" height="10" />
+			<img src="image/?w=10&amp;h=20" width="10" height="20" />
+			<img src="image/?w=10&amp;h=20" width="10" height="20" />
 
-$width = (int)($_GET["w"]??1);
-$width = ($width < 1)?1:$width;
-$width = ($width > 1000)?1000:$width;
+			<img src="image/?w=40&amp;h=10" width="40" height="20" />
+			<img src="image/?w=40&amp;h=10" width="40" height="20" />
+			<img src="image/?w=40&amp;h=10" width="40" height="20" />
+			<img src="image/?w=40&amp;h=10" width="40" height="20" />
+			<img src="image/?w=40&amp;h=10" width="40" height="20" />
+			<img src="image/?w=40&amp;h=10" width="40" height="20" />
+			
+			<img src="image/?w=40&amp;h=10" width="90" height="20" />
+		</p>
+		
+		<h2>Your own image size</h2>
+		<form method="GET" action="image/" name="chooser">
+			Width (w): <input type="number" name="w" value="20" min="1" max="1000" placeholder="1" required="required" /> x
+			Height (h): <input type="number" name="h" value="20" min="1" max="1000" placeholder="1000" required="required" />
+			<input type="submit" value="View Image" />
+			<a href="#" onclick="return _randomize();">Random Size</a>
+		</form>
+	</div>
+	<script>
+		function _rand(min, max)
+		{
+			var rand = parseInt(Math.random() * (max - min) + min);
+			return rand;
+		}
+		function _randomize()
+		{
+			var min = 1;
+			var max = 1000;
+			
+			var width = _rand(min, max);
+			var height = _rand(min, max);
 
-$height = (int)($_GET["h"]??1);
-$height = ($height < 1)?1:$height;
-$height = ($height > 1000)?1000:$height;
-
-/**
- * When GD not installed or other errors
- */
-function error()
-{
-    readfile("1x1.png");
-    return null;
-}
-
-if(function_exists("imagecreate"))
-{
-    $im = imagecreate($width, $height) or die(error());
-    $background_color = imagecolorallocate($im, 0xDD, 0xDD, 0xDD);
-    imagepng($im);
-    imagedestroy($im);
-}
-else
-{
-    error();
-}
+			document.forms["chooser"].elements["w"].value = width;
+			document.forms["chooser"].elements["h"].value = height;
+			
+			return false;
+		}
+	</script>
+</body>
+</html>
