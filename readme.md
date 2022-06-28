@@ -11,7 +11,9 @@ For example, [view how it appears](https://transparent-images.herokuapp.com/) - 
 **Answer**: Rather, Use CSS.
 
 **Question**: How do I install it?<br/>
-**Answer**: Make src/<image> folder as your image server as the root of your image server, eg. images.example.com.
+**Answer**: Make src/image/ folder as the root of your image server, eg. image.example.com.
+
+Then, you will be able to use: `<img src="DOMAIN/?w=100&amp;h=100" />` for a 100x100 sized image.
 
 **Question**: Can it support multiple hosting server?<br/>
 **Answer**: It currently supports apache via .htaccess. You can change it yourself, if you have a different hosting provider.
